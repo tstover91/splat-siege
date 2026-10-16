@@ -42,7 +42,8 @@
     const engine = new Engine(config);
     engine.startGame({
       onProgress(current, total) {
-        if (total > 0) document.getElementById('bar').style.width = (current / total * 100) + '%';
+        const bar = document.getElementById('bar');
+        if (total > 0 && bar) bar.style.width = (current / total * 100) + '%';
       }
     }).then(() => {
       document.getElementById('loading').remove();
