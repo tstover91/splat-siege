@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Splat Siege</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #17364a; touch-action: none; overscroll-behavior: none; }
+    #canvas { display: block; width: 100%; height: 100%; outline: none; }
+    #loading { position: fixed; inset: 0; display: grid; place-content: center; text-align: center; color: #fff8e9; font: 700 20px system-ui, sans-serif; background: #17364a; pointer-events: none; }
+    #loading strong { font-size: 48px; letter-spacing: -2px; margin-bottom: 16px; }
+    #loading strong span { color: #f47760; }
+    #track { width: 280px; height: 8px; border-radius: 8px; background: #3c5969; margin: 20px auto; overflow: hidden; }
+    #bar { height: 100%; background: #35bdc1; width: 0%; transition: width .15s; }
+    #rotate { display: none; position: fixed; inset: 0; z-index: 10; place-content: center; text-align: center; background: #17364a; color: #fff8e9; font: 700 24px system-ui, sans-serif; padding: 24px; }
+    #rotate span { color: #35bdc1; font-size: 70px; }
+    @media (orientation: portrait) and (max-width: 900px) { #rotate { display: grid; } }
+  </style>
+  <link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
+<link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
+
+</head>
+<body>
+  <canvas id="canvas" tabindex="0">Your browser needs canvas support to play.</canvas>
+  <div id="loading"><strong>SPLAT <span>SIEGE</span></strong><div>Mixing the paint...</div><div id="track"><div id="bar"></div></div><div id="notice"></div></div>
+  <div id="rotate"><span>↻</span>Turn your device sideways.<br>The forts need a little elbow room.</div>
+  <script src="platform.js"></script>
+  <script src="index.js"></script>
+  <script>
+    const config = {"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":257904,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+    const engine = new Engine(config);
+    engine.startGame({
+      onProgress(current, total) {
+        if (total > 0) document.getElementById('bar').style.width = (current / total * 100) + '%';
+      }
+    }).then(() => {
+      document.getElementById('loading').remove();
+      document.getElementById('canvas').focus();
+    }).catch(error => {
+      document.getElementById('notice').textContent = 'Could not start. Please reload or try a browser with WebGL 2 support.';
+      console.error(error);
+    });
+    document.addEventListener('contextmenu', event => event.preventDefault());
+  </script>
+</body>
+</html>
+
