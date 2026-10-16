@@ -30,14 +30,14 @@
   <script src="viewport.js"></script>
   <script src="index.js"></script>
   <script>
-    const config = {"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":274576,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
+    const config = {"args":[],"canvasResizePolicy":0,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":274592,"index.wasm":39514754},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4};
     // The shell owns CSS sizing. Godot keeps a fixed, matching render buffer,
     // so mobile DPR and browser chrome cannot produce an oversized viewport.
     config.canvasResizePolicy = 0;
     config.canvas = document.getElementById('canvas');
     // Export fills this with the pack's content hash. A new release must not
     // accidentally run an older .pck cached by the mobile browser.
-    config.mainPack = 'index.pck?v=9ac6bbc5ec9a';
+    config.mainPack = 'index.pck?v=cdf65cb38811';
     config.fileSizes[config.mainPack] = config.fileSizes['index.pck'];
     const engine = new Engine(config);
     engine.startGame({
