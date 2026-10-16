@@ -35,6 +35,10 @@
     // so mobile DPR and browser chrome cannot produce an oversized viewport.
     config.canvasResizePolicy = 0;
     config.canvas = document.getElementById('canvas');
+    // Export fills this with the pack's content hash. A new release must not
+    // accidentally run an older .pck cached by the mobile browser.
+    config.mainPack = 'index.pck?v=bc9b752c0814';
+    config.fileSizes[config.mainPack] = config.fileSizes['index.pck'];
     const engine = new Engine(config);
     engine.startGame({
       onProgress(current, total) {
@@ -51,4 +55,5 @@
   </script>
 </body>
 </html>
+
 
